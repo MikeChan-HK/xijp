@@ -1,35 +1,34 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>習近平模擬器</title>
 	<meta charset="UTF-8">
+	<title>習近平模擬器</title>
 	<style>
 		body {
-			text-align: center; /*將body元素中的內容置中*/
-		}
-		form {
-			display: inline-block; /*讓表單元素顯示為行內元素*/
-			text-align: left; /*將表單元素中的內容左對齊*/
+			text-align: center;
 		}
 	</style>
 </head>
 <body>
 	<h1>習近平模擬器</h1>
-	<form action="main.py" method="get">
-		<label for="who">誰說的？</label>
-		<input type="text" id="who" name="who"><br><br>
-		<label for="leadership">他領導了什麼？</label>
-		<input type="text" id="leadership" name="leadership"><br><br>
+	<form>
+		<label for="speaker">誰說的？</label>
+		<input type="text" id="speaker" name="speaker"><br><br>
+		<label for="leader">他領導了什麼？</label>
+		<input type="text" id="leader" name="leader"><br><br>
 		<input type="submit" value="提交">
 	</form>
-	<p id="out"></p>
+	<div id="output"></div>
 	<script>
-		// 使用 JavaScript 來處理 main.py 回傳的字串
-		var output = document.getElementById("out");
-		var urlParams = new URLSearchParams(window.location.search);
-		if (urlParams.has('out')) {
-			output.innerHTML = urlParams.get('out');
-		}
+		const form = document.querySelector('form');
+		const output = document.querySelector('#output');
+		form.addEventListener('submit', (e) => {
+			e.preventDefault();
+			const speaker = document.querySelector('#speaker').value;
+			const leader = document.querySelector('#leader').value;
+			const result = `${speaker}的领导直接关系${leader}的根本方向、前途命运、最终成败。${speaker}的领导决定${leader}的根本性质，只有毫不动摇坚持${speaker}的领导，${leader}才能前景光明、繁荣兴盛；否则就会偏离航向、丧失灵魂，甚至犯颠覆性错误。${speaker}的领导确保${leader}锚定奋斗目标行稳致远，我们${speaker}的奋斗目标一以贯之，一代一代地接力推进，取得了举世瞩目、彪炳史册的辉煌业绩。${speaker}的领导激发建设${leader}的强劲动力，我们${speaker}勇于改革创新，不断破除各方面体制机制弊端，为${leader}注入不竭动力。${speaker}的领导凝聚建设${leader}的磅礴力量，${speaker}坚持${leader}的群众路线，坚持以人民为中心的发展思想，发展全过程人民民主，充分激发全体人民的主人翁精神`;
+			output.innerHTML = result;
+		});
 	</script>
 </body>
 </html>
