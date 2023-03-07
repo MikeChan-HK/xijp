@@ -1,26 +1,35 @@
-  <!DOCTYPE html>
-  <html>
-  <head>
-    <title>習近平模擬器</title>
-    <meta charset="UTF-8">
-  </head>
-  <body>
-    <h1>習近平模擬器</h1>
-    <form action="main.py" method="get">
-      <label for="who">誰說的？</label>
-      <input type="text" id="who" name="who"><br><br>
-      <label for="leadership">他領導了什麼？</label>
-      <input type="text" id="leadership" name="leadership"><br><br>
-      <input type="submit" value="提交">
-    </form>
-    <p id="out"></p>
-    <script>
-      // 使用 JavaScript 來處理 main.py 回傳的字串
-      var output = document.getElementById("out");
-      var urlParams = new URLSearchParams(window.location.search);
-      if (urlParams.has('out')) {
-        output.innerHTML = urlParams.get('out');
-      }
-    </script>
-  </body>
-  </html>
+<!DOCTYPE html>
+<html>
+<head>
+	<title>習近平模擬器</title>
+	<meta charset="UTF-8">
+	<style>
+		body {
+			text-align: center; /*將body元素中的內容置中*/
+		}
+		form {
+			display: inline-block; /*讓表單元素顯示為行內元素*/
+			text-align: left; /*將表單元素中的內容左對齊*/
+		}
+	</style>
+</head>
+<body>
+	<h1>習近平模擬器</h1>
+	<form action="main.py" method="get">
+		<label for="who">誰說的？</label>
+		<input type="text" id="who" name="who"><br><br>
+		<label for="leadership">他領導了什麼？</label>
+		<input type="text" id="leadership" name="leadership"><br><br>
+		<input type="submit" value="提交">
+	</form>
+	<p id="out"></p>
+	<script>
+		// 使用 JavaScript 來處理 main.py 回傳的字串
+		var output = document.getElementById("out");
+		var urlParams = new URLSearchParams(window.location.search);
+		if (urlParams.has('out')) {
+			output.innerHTML = urlParams.get('out');
+		}
+	</script>
+</body>
+</html>
