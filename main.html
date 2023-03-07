@@ -1,16 +1,25 @@
-<!DOCTYPE html>
-<html>
+  <!DOCTYPE html>
+  <html>
   <head>
     <title>習近平模擬器</title>
   </head>
   <body>
     <h1>習近平模擬器</h1>
-    <form>
-      <label for="whoSaid">誰說的？</label>
-      <input type="text" id="whoSaid" name="whoSaid"><br><br>
-      <label for="whatLed">他領導了什麼？</label>
-      <input type="text" id="whatLed" name="whatLed"><br><br>
+    <form action="main.py" method="get">
+      <label for="who">誰說的？</label>
+      <input type="text" id="who" name="who"><br><br>
+      <label for="leadership">他領導了什麼？</label>
+      <input type="text" id="leadership" name="leadership"><br><br>
       <input type="submit" value="提交">
     </form>
+    <p id="out"></p>
+    <script>
+      // 使用 JavaScript 來處理 main.py 回傳的字串
+      var output = document.getElementById("out");
+      var urlParams = new URLSearchParams(window.location.search);
+      if (urlParams.has('out')) {
+        output.innerHTML = urlParams.get('out');
+      }
+    </script>
   </body>
-</html>
+  </html>
